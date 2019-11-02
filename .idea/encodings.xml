@@ -5,9 +5,9 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/liu/util/JDBCUtils.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/add.html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/css" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/index.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/index.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/js" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/list.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/list.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/login.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/update.html" charset="GBK" />
   </component>

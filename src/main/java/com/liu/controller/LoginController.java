@@ -15,15 +15,14 @@ import java.io.IOException;
 @WebServlet("/loginController")
 public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
+        request.setCharacterEncoding("UTF-8");
         String _username = request.getParameter("username");
         String password = request.getParameter("password");
         String verifycode = request.getParameter("verifycode");
         String checkcode_server = (String) request.getSession().getAttribute("CHECKCODE_SERVER");
         request.getSession().removeAttribute("CHECKCODE_SERVER");
         if ("".equals(verifycode)||verifycode==null||!verifycode.equalsIgnoreCase(checkcode_server)){
-            request.setAttribute("msg","验证码错误");
+            request.setAttribute("msg","验证码有误");
             request.getRequestDispatcher("/login.jsp").forward(request,response);
         }
         ManagerService ms=new ManagerServiceImpl();
@@ -33,8 +32,9 @@ public class LoginController extends HttpServlet {
 
         Manager checkUser=ms.loginCheck(loginUser);
         if (checkUser!=null){
-
-        }else {
+            request.getSession().setAttribute("loginUser",checkUser);
+            response.sendRedirect(request.getServletContext().getContextPath()+"/index.jsp");
+        }else if (checkUser==null){
             request.setAttribute("msg","密码或用户名错误");
             request.getRequestDispatcher("/login.jsp").forward(request,response);
         }

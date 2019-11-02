@@ -99,7 +99,8 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-framework-bom</artifactId>
-            <version>5.1.7.RELEASE</version>
+            <version>5.2.0.RELEASE</version>
+            <scope>pom</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

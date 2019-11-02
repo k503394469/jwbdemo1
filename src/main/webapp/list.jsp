@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+<%@page contentType="text/html;charset=utf-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 网页使用的语言 -->
-<html lang="zh-CN">
+<html>
 <head>
     <!-- 指定字符集 -->
     <meta charset="utf-8">
@@ -39,56 +40,18 @@
             <th>邮箱</th>
             <th>操作</th>
         </tr>
+        <c:forEach items="${requestScope.userPage.dataList}" var="tempUser" varStatus="s">
         <tr>
-            <td>1</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>20</td>
-            <td>广东</td>
-            <td>44444222</td>
-            <td>zs@qq.com</td>
+            <td>${s.count}</td>
+            <td>${tempUser.name}</td>
+            <td>${tempUser.gender}</td>
+            <td>${tempUser.age}</td>
+            <td>${tempUser.address}</td>
+            <td>${tempUser.qq}</td>
+            <td>${tempUser.email}</td>
             <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="">删除</a></td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>20</td>
-            <td>广东</td>
-            <td>44444222</td>
-            <td>zs@qq.com</td>
-            <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="">删除</a></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>20</td>
-            <td>广东</td>
-            <td>44444222</td>
-            <td>zs@qq.com</td>
-            <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="">删除</a></td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>20</td>
-            <td>广东</td>
-            <td>44444222</td>
-            <td>zs@qq.com</td>
-            <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="">删除</a></td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>20</td>
-            <td>广东</td>
-            <td>44444222</td>
-            <td>zs@qq.com</td>
-            <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="">删除</a></td>
-        </tr>
+        </c:forEach>
         <tr>
             <td colspan="8" align="center"><a class="btn btn-primary" href="add.html">添加联系人</a></td>
         </tr>

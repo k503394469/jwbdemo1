@@ -33,7 +33,6 @@ public class LookUser extends HttpServlet {
 
         request.setAttribute("userPage",userPage);
         request.setAttribute("pbMap",pbMap);
-        System.out.println(userPage);
         request.getRequestDispatcher("/list.jsp").forward(request,response);
 
     }

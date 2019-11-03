@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
         pb.setDataList(dataList);
         int totalPage = (totalCount % rows) == 0 ? totalCount / rows : totalCount / rows + 1;
         pb.setTotalPage(totalPage);
-        System.out.println(pb);
         return pb;
     }
 }

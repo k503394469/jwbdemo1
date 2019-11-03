@@ -41,21 +41,67 @@
             <th>操作</th>
         </tr>
         <c:forEach items="${requestScope.userPage.dataList}" var="tempUser" varStatus="s">
-        <tr>
-            <td>${s.count}</td>
-            <td>${tempUser.name}</td>
-            <td>${tempUser.gender}</td>
-            <td>${tempUser.age}</td>
-            <td>${tempUser.address}</td>
-            <td>${tempUser.qq}</td>
-            <td>${tempUser.email}</td>
-            <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="">删除</a></td>
-        </tr>
+            <tr>
+                <td>${s.count}</td>
+                <td>${tempUser.name}</td>
+                <td>${tempUser.gender}</td>
+                <td>${tempUser.age}</td>
+                <td>${tempUser.address}</td>
+                <td>${tempUser.qq}</td>
+                <td>${tempUser.email}</td>
+                <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;
+                    <a class="btn btn-default btn-sm" href="">删除</a></td>
+            </tr>
         </c:forEach>
         <tr>
             <td colspan="8" align="center"><a class="btn btn-primary" href="add.html">添加联系人</a></td>
         </tr>
     </table>
+    <div align="center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <c:if test="${requestScope.userPage.currentPage==1}">
+                    <li class="disabled">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${requestScope.userPage.currentPage!=1}">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/lookUser?currentPage=${(i-1)<=0?1:i-1}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                </c:if>
+                <c:forEach begin="${1}" end="${requestScope.userPage.totalPage}" step="1" var="i">
+                    <c:if test="${requestScope.userPage.currentPage==i}">
+                        <li class="active"><a
+                                href="${pageContext.request.contextPath}/lookUser?currentPage=${i}">${i}</a></li>
+                    </c:if>
+                    <c:if test="${requestScope.userPage.currentPage!=i}">
+                        <li><a href="${pageContext.request.contextPath}/lookUser?currentPage=${i}">${i}</a></li>
+                    </c:if>
+                </c:forEach>
+                <c:if test="${requestScope.userPage.currentPage==requestScope.userPage.totalPage}">
+                    <li class="disabled">
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${requestScope.userPage.currentPage!=requestScope.userPage.totalPage}">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/lookUser?currentPage=${requestScope.userPage.currentPage>requestScope.userPage.totalPage?(requestScope.userPage.currentPage):requestScope.userPage.currentPage+1}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </c:if>
+            </ul>
+        </nav>
+    </div>
 </div>
 </body>
 </html>

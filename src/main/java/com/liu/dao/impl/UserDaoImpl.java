@@ -51,7 +51,6 @@ public class UserDaoImpl implements UserDao {
         sb.append(" limit ?,?");
         paramList.add(start);
         paramList.add(rows);
-        System.out.println(paramList);
         return jt.query(sb.toString(),new BeanPropertyRowMapper<>(User.class),paramList.toArray());
     }
 }

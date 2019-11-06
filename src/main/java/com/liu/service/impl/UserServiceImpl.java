@@ -30,4 +30,24 @@ public class UserServiceImpl implements UserService {
         pb.setTotalPage(totalPage);
         return pb;
     }
+
+    @Override
+    public void add(User addUser) {
+        dao.add(addUser);
+    }
+
+    @Override
+    public void del(String id) {
+        dao.del(Integer.parseInt(id));
+    }
+
+    @Override
+    public User findUserById(String id) {
+        return dao.findUserById(Integer.parseInt(id));
+    }
+
+    @Override
+    public void updateUser(User update) {
+        dao.update(update);
+    }
 }

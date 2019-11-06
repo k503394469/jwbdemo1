@@ -53,4 +53,28 @@ public class UserDaoImpl implements UserDao {
         paramList.add(rows);
         return jt.query(sb.toString(),new BeanPropertyRowMapper<>(User.class),paramList.toArray());
     }
+
+    @Override
+    public void add(User addUser) {
+        String sql="insert into user values(null,?,?,?,?,?,?)";
+        jt.update(sql,addUser.getName(),addUser.getGender(),addUser.getAge(),addUser.getAddress(),addUser.getQq(),addUser.getEmail());
+    }
+
+    @Override
+    public void del(int userId) {
+        String sql="delete from user where id=?";
+        jt.update(sql,userId);
+    }
+
+    @Override
+    public User findUserById(int id) {
+        String sql="select * from user where id=?";
+        return jt.queryForObject(sql,new BeanPropertyRowMapper<>(User.class),id);
+    }
+
+    @Override
+    public void update(User update) {
+        String sql = "update user set name = ?,gender = ? ,age = ? , address = ? , qq = ?, email = ? where id = ?";
+        jt.update(sql,update.getName(),update.getGender(),update.getAge(),update.getAddress(),update.getQq(),update.getEmail(),update.getId());
+    }
 }

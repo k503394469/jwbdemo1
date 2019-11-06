@@ -49,12 +49,12 @@
                 <td>${tempUser.address}</td>
                 <td>${tempUser.qq}</td>
                 <td>${tempUser.email}</td>
-                <td><a class="btn btn-default btn-sm" href="update.html">修改</a>&nbsp;
-                    <a class="btn btn-default btn-sm" href="">删除</a></td>
+                <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/findUserController?id=${tempUser.id}">修改</a>&nbsp;
+                    <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/delUserController?id=${tempUser.id}">删除</a></td>
             </tr>
         </c:forEach>
         <tr>
-            <td colspan="8" align="center"><a class="btn btn-primary" href="add.html">添加联系人</a></td>
+            <td colspan="8" align="center"><a class="btn btn-primary" href="add.jsp">添加联系人</a></td>
         </tr>
     </table>
     <div align="center">
@@ -69,7 +69,7 @@
                 </c:if>
                 <c:if test="${requestScope.userPage.currentPage!=1}">
                     <li>
-                        <a href="${pageContext.request.contextPath}/lookUser?currentPage=${(i-1)<=0?1:i-1}"
+                        <a href="${pageContext.request.contextPath}/lookUser?currentPage=${(requestScope.userPage.currentPage-1)<=0?1:requestScope.userPage.currentPage-1}"
                            aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
